@@ -630,7 +630,7 @@ async def group_trigger(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     if msg.reply_to_message is None:
-        warn = await msg.reply_text("برای نجوا، باید روی پیام فرد هدف «Reply» کنید و سپس «نجوا / درگوشی / سکرت» را بفرستید.")
+        warn = await msg.reply_text("<RHINOSOUL team> برای نجوا، باید روی پیام فرد هدف «Reply» کنید و سپس «نجوا / درگوشی / سکرت» را بفرستید.")
         schedule_delete(context, chat.id, warn.message_id, 20)
         return
 
@@ -658,7 +658,7 @@ async def group_trigger(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not member_ok:
         rows = []
         if len(MANDATORY_CHANNELS) >= 1:
-            rows.append([InlineKeyboardButton("عضویت در کانال یک", url=f"https://t.me/{MANDATORY_CHANNELS[0]}")])
+            rows.append([InlineKeyboardButton("عضویت در کانال", url=f"https://t.me/{MANDATORY_CHANNELS[0]}")])
    #     if len(MANDATORY_CHANNELS) >= 2:
    #        rows.append([InlineKeyboardButton("عضویت در کانال دو", url=f"https://t.me/{MANDATORY_CHANNELS[1]}")])
         rows.append([InlineKeyboardButton("عضو شدم ✅", callback_data=f"gjchk:{user.id}:{chat.id}:{target.id}")])
@@ -796,7 +796,7 @@ async def private_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if m_send_id:
             dest = int(m_send_id.group(1)); body = m_send_id.group(2)
             try:
-                await context.bot.send_message(dest, body); await update.message.reply_text("✅ ارسال شد.")
+                await context.bot.send_message(dest, body); await update.message.reply_text("RHINOSOUL TM ... ✅ ارسال شد.")
             except Exception:
                 await update.message.reply_text("❌ خطا در ارسال.")
             return
