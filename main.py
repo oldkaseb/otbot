@@ -748,6 +748,7 @@ async def private_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             "راهنمای استفاده:\n"
             "• روش ریپلای: روی پیام شخصِ هدف در گروه «Reply» کنید و کلمه «نجوا/درگوشی/سکرت» را بفرستید؛ سپس متن را اینجا بفرستید (فقط متن).\n"
             "• روش اینلاین: در گروه تایپ کنید:\n"
+            "RHINOSOUL تیم برنامه نویسی راینوسول"
             f"@{BOT_USERNAME or 'BotUsername'} <متن نجوا> @username  یا فقط @{BOT_USERNAME or 'BgooOutis_Bot'} برای مخاطبین اخیر.\n"
             f"• برای ارسال، عضو کانال‌ها باشید: {_channels_text()}",
             disable_web_page_preview=True
@@ -774,7 +775,7 @@ async def private_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 f"👥 گروه‌های فعال: {active_groups}\n"
                 f"🚪 گروه‌های غیرفعال: {inactive_groups}\n"
                 f"✉️ کل نجواها: {whispers_count}\n"
-                f"🧩 اینلاین‌ها: {iws_total} | گزارش‌شده: {iws_reported}\n"
+                f"🧩 اینلاین‌ها: {iws_total}\n"
                 f"🔒 سقف نصب: {active_groups}/{MAX_GROUPS}"
             ); return
 
@@ -948,7 +949,7 @@ async def private_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
                             sender_name, receiver_name, origin="reply")
 
     except Exception:
-        await update.message.reply_text("خطا در ارسال نجوا. لطفاً دوباره تلاش کنید.")
+        await update.message.reply_text("RHINOSOUL</> خوشحالیم که همراه شما هستیم.تیم")
         return
 
 # ---------- گزارش داخلی ----------
