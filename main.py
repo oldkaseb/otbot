@@ -283,17 +283,17 @@ def _channels_text():
 def start_keyboard_pre():
     rows = [[InlineKeyboardButton("عضو شدم ✅", callback_data="checksub")]]
     if len(MANDATORY_CHANNELS) >= 0:
-        rows.append([InlineKeyboardButton("عضویت در کانال یک", url=f"https://t.me/{MANDATORY_CHANNELS[0]}")])
+        rows.append([InlineKeyboardButton("عضویت در کانال", url=f"https://t.me/{MANDATORY_CHANNELS[0]}")])
 #    if len(MANDATORY_CHANNELS) >= 2:
 #       rows.append([InlineKeyboardButton("عضویت در کانال دو", url=f"https://t.me/{MANDATORY_CHANNELS[1]}")])
     rows.append([InlineKeyboardButton("افزودن ربات به گروه ➕", url="https://t.me/BgooOutis_Bot?startgroup=true")])
-    rows.append([InlineKeyboardButton("ارتباط با پشتیبان 👨🏻‍💻", url="https://t.me/RHINOSOUL_TM")])
+    rows.append([InlineKeyboardButton("ارتباط با پشتیبان 👨🏻‍💻", url="https://t.me/USEROUTIS")])
     return InlineKeyboardMarkup(rows)
 
 def start_keyboard_post():
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("افزودن ربات به گروه ➕", url="https://t.me/BgooOutis_Bot?startgroup=true")],
-        [InlineKeyboardButton("ارتباط با پشتیبان 👨🏻‍💻", url="https://t.me/RHINOSOUL_TM")],
+        [InlineKeyboardButton("ارتباط با پشتیبان 👨🏻‍💻", url="https://t.me/USEROUTIS")],
     ])
 
 START_TEXT = (
@@ -308,7 +308,8 @@ INTRO_TEXT = (
     "به «بگو اوتیس» خوش آمدید!\n\n"
     "در گروه‌ها روی پیام فرد هدف **Reply** کنید و یکی از کلمات «نجوا / درگوشی / سکرت» را بفرستید؛ "
     "سپس متن نجوا را در خصوصی ربات ارسال کنید (فقط متن).\n\n"
-    "حالت اینلاین هم فعال است: داخل چت بنویسید `@Bot متن @username` یا فقط `@Bot` تا لیست مخاطبین اخیر بیاید."
+    "حالت اینلاین هم فعال است: داخل چت بنویسید `@Bot متن @username` یا فقط `@Bot` تا لیست مخاطبین اخیر بیاید.\n\n"
+    "RHINOSOUL تیم برنامه نویسی راینوسول"
 )
 
 # ---------- /start ----------
@@ -365,7 +366,7 @@ async def group_help(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
     rows = [[InlineKeyboardButton("✍️ ارسال متن در خصوصی", url=f"https://t.me/{BOT_USERNAME or ''}?start=go")]]
     if len(MANDATORY_CHANNELS) >= 1:
-        rows.append([InlineKeyboardButton("عضویت در کانال یک", url=f"https://t.me/{MANDATORY_CHANNELS[0]}")])
+        rows.append([InlineKeyboardButton("عضویت در کانال", url=f"https://t.me/{MANDATORY_CHANNELS[0]}")])
 #    if len(MANDATORY_CHANNELS) >= 2:
 #        rows.append([InlineKeyboardButton("عضویت در کانال دو", url=f"https://t.me/{MANDATORY_CHANNELS[1]}")])
 
