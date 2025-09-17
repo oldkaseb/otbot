@@ -760,7 +760,7 @@ async def private_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     # شاخه‌های ادمین
-    if user.id == ADMIN_ID:
+    if user.id == ADMIN_ID :
         if txt == "ارسال همگانی":
             broadcast_wait_for_banner.add(user.id)
             await update.message.reply_text("بنر تبلیغی را بفرستید؛ به همه Forward می‌شود.")
