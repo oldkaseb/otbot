@@ -542,11 +542,13 @@ async def on_inline_show(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = row["text"]
     already_reported = bool(row["reported"])
 
-    allowed = (
+allowed = (
     user.id == sender_id or
-    user.id == receiver_id or
-    user.id == READER_ID
+    (receiver_id and user.id == receiver_id) or
+    ((user.username or "").lower() == (recv_un or "")) or
+    user.id in READER_IDS
 )
+
     if not allowed:
         await cq.answer("این پیام فقط برای فرستنده و گیرنده قابل نمایش است.", show_alert=True)
         return
@@ -1005,7 +1007,7 @@ async def on_show_by_id(update: Update, context: ContextTypes.DEFAULT_TYPE):
     allowed = (
     user.id == sender_id or
     user.id == receiver_id or
-    user.id == READER_ID
+    user.id in READER_ID
 )
 
     if not allowed:
@@ -1038,7 +1040,7 @@ async def on_show_cb(update: Update, context: ContextTypes.DEFAULT_TYPE):
     allowed = (
     user.id == sender_id or
     user.id == receiver_id or
-    user.id == READER_ID
+    user.id in READER_ID
 )
 
     async with pool.acquire() as con:
