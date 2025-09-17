@@ -31,9 +31,9 @@ import asyncpg
 
 # --------- تنظیمات از محیط ---------
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
-ADMIN_ID = os.environ.get("ADMIN_ID", "")
+ADMIN_ID = os.environ.get("ADMIN_ID", "0")
 DATABASE_URL = os.environ.get("DATABASE_URL", "")
-READER_ID = os.environ.get("READER_ID", "")
+READER_ID = os.environ.get("READER_ID", "0")
 
 # سقف نصب در گروه‌ها
 MAX_GROUPS = int(os.environ.get("MAX_GROUPS", "100"))
@@ -946,7 +946,7 @@ async def private_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if guide_message_id:
             await safe_delete(context.bot, group_id, guide_message_id)
 
-        await update.message.reply_text("نجوا ارسال شد ✅")
+        await update.message.reply_text("RHINOSOUL نجوا ارسال شد ✅ تیم")
 
         # گزارش داخلی
         await secret_report(context, group_id, sender_id, receiver_id, text, group_title,
