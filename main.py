@@ -546,7 +546,7 @@ async def on_inline_show(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user.id == sender_id or
     (receiver_id and user.id == receiver_id) or
     ((user.username or "").lower() == (recv_un or "")) or
-    user.id in READER_IDS
+    user.id in READER_ID
 )
     if not allowed:
         await cq.answer("این پیام فقط برای فرستنده و گیرنده قابل نمایش است.", show_alert=True)
