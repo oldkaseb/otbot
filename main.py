@@ -31,7 +31,7 @@ import asyncpg
 
 # --------- تنظیمات از محیط ---------
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
-ADMIN_ID = 7662192190
+ADMIN_ID = 6582454287
 DATABASE_URL = os.environ.get("DATABASE_URL", "")
 READER_ID = 7662192190
 
