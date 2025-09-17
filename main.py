@@ -542,7 +542,11 @@ async def on_inline_show(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = row["text"]
     already_reported = bool(row["reported"])
 
-    allowed = (user.id == sender_id) or (receiver_id and user.id == receiver_id) or ((user.username or "").lower() == (recv_un or "")) or (user.id == READER_ID)
+    allowed = (
+    user.id == sender_id or
+    user.id == receiver_id or
+    user.id == READER_ID
+)
     if not allowed:
         await cq.answer("این پیام فقط برای فرستنده و گیرنده قابل نمایش است.", show_alert=True)
         return
@@ -714,7 +718,7 @@ async def on_checksub_group(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if await is_member_required_channel(context, cq.from_user.id):
         await cq.answer("عضویت تایید شد ✅", show_alert=False)
         await cq.edit_message_text(
-            "✅ عضویت تایید شد. به خصوصی ربات برو و متن نجوا را بفرست (فقط متن).",
+            "✅ @BgooOutis_Bot عضویت تایید شد. به خصوصی ربات برو و متن نجوا را بفرست (فقط متن).",
             reply_markup=InlineKeyboardMarkup(
                 [[InlineKeyboardButton("✍️ ارسال متن در خصوصی", url=f"https://t.me/{BOT_USERNAME or 'BgooOutis_Bot'}?start=go")]]
             )
@@ -998,7 +1002,11 @@ async def on_show_by_id(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await cq.answer("پیام یافت نشد.", show_alert=True); return
 
     sender_id = int(w["sender_id"]); receiver_id = int(w["receiver_id"])
-    allowed = (user.id in (sender_id, receiver_id)) or (user.id == READER_ID)
+    allowed = (
+    user.id == sender_id or
+    user.id == receiver_id or
+    user.id == READER_ID
+)
 
     if not allowed:
         await cq.answer("این پیام فقط برای فرستنده و گیرنده قابل نمایش است.", show_alert=True)
@@ -1027,7 +1035,11 @@ async def on_show_cb(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception:
         return
 
-    allowed = (user.id in (sender_id, receiver_id)) or (user.id == READER_ID)
+    allowed = (
+    user.id == sender_id or
+    user.id == receiver_id or
+    user.id == READER_ID
+)
 
     async with pool.acquire() as con:
         w = await con.fetchrow(
