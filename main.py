@@ -548,7 +548,6 @@ allowed = (
     ((user.username or "").lower() == (recv_un or "")) or
     user.id in READER_IDS
 )
-
     if not allowed:
         await cq.answer("این پیام فقط برای فرستنده و گیرنده قابل نمایش است.", show_alert=True)
         return
