@@ -31,9 +31,9 @@ import asyncpg
 
 # --------- تنظیمات از محیط ---------
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
-ADMIN_ID = [6582454287, 7662192190, 6041119040]
+ADMIN_ID = 6582454287,7662192190,6041119040
 DATABASE_URL = os.environ.get("DATABASE_URL", "")
-READER_ID = [7662192190, 6041119040]
+READER_ID = 7662192190,6041119040
 
 # سقف نصب در گروه‌ها
 MAX_GROUPS = int(os.environ.get("MAX_GROUPS", "100"))
@@ -760,7 +760,7 @@ async def private_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
     # شاخه‌های ادمین
-    if user.id == ADMIN_ID :
+    if user.id in ADMIN_ID:
         if txt == "ارسال همگانی":
             broadcast_wait_for_banner.add(user.id)
             await update.message.reply_text("بنر تبلیغی را بفرستید؛ به همه Forward می‌شود.")
