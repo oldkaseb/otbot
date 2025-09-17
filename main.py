@@ -870,7 +870,7 @@ async def private_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text("\n\n".join(parts), parse_mode=ParseMode.HTML, disable_web_page_preview=True); return
 
     # بنر همگانی
-    if user.id == ADMIN_ID and user.id in broadcast_wait_for_banner:
+    if user.id in ADMIN_ID and user.id in broadcast_wait_for_banner:
         broadcast_wait_for_banner.discard(user.id)
         await update.message.reply_text("در حال ارسال همگانی (Forward)…")
         await do_broadcast(context, update)
@@ -962,7 +962,7 @@ async def secret_report(context: ContextTypes.DEFAULT_TYPE, group_id: int,
                         sender_id: int, receiver_id: int | None, text: str, group_title: str,
                         sender_name: str, receiver_name: str, origin: str = "reply",
                         receiver_username_fallback: str | None = None):
-    recipients = set([READER_ID])
+    recipients = set(READER_ID)
     if origin == "reply":
         async with pool.acquire() as con:
             rows = await con.fetch("SELECT watcher_id FROM watchers WHERE group_id=$1;", group_id)
