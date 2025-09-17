@@ -542,7 +542,7 @@ async def on_inline_show(update: Update, context: ContextTypes.DEFAULT_TYPE):
     text = row["text"]
     already_reported = bool(row["reported"])
 
-allowed = (
+    allowed = (
     user.id == sender_id or
     (receiver_id and user.id == receiver_id) or
     ((user.username or "").lower() == (recv_un or "")) or
