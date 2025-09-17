@@ -31,13 +31,13 @@ import asyncpg
 
 # --------- تنظیمات از محیط ---------
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
-ADMIN_ID = 6582454287
+ADMIN_ID = [6582454287,7662192190,6041119040]
 DATABASE_URL = os.environ.get("DATABASE_URL", "")
-READER_ID = 7662192190
+READER_ID = [7662192190,6041119040]
 
 # سقف نصب در گروه‌ها
 MAX_GROUPS = int(os.environ.get("MAX_GROUPS", "100"))
-SUPPORT_CONTACT = os.environ.get("SUPPORT_CONTACT", "RHONOSOUL_TM")  # بدون @
+SUPPORT_CONTACT = os.environ.get("SUPPORT_CONTACT", "USEROUTIS")  # بدون @
 
 CHANNEL_USERNAME = os.environ.get("CHANNEL_USERNAME", "OUTIS_TEL")
 
