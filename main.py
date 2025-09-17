@@ -37,7 +37,7 @@ READER_ID = [int(x) for x in os.environ.get("READER_ID", "7662192190,6041119040"
 
 # سقف نصب در گروه‌ها
 MAX_GROUPS = int(os.environ.get("MAX_GROUPS", "100"))
-SUPPORT_CONTACT = os.environ.get("SUPPORT_CONTACT", "soulsownerbot")  # بدون @
+SUPPORT_CONTACT = os.environ.get("SUPPORT_CONTACT", "RHONOSOUL_TM")  # بدون @
 
 CHANNEL_USERNAME = os.environ.get("CHANNEL_USERNAME", "OUTIS_TEL")
 
@@ -47,8 +47,6 @@ def _norm(ch: str) -> str:
 MANDATORY_CHANNELS = []
 if _norm(CHANNEL_USERNAME):
     MANDATORY_CHANNELS.append(_norm(CHANNEL_USERNAME))
-if _norm(CHANNEL_USERNAME_2) and _norm(CHANNEL_USERNAME_2).lower() != _norm(CHANNEL_USERNAME).lower():
-    MANDATORY_CHANNELS.append(_norm(CHANNEL_USERNAME_2))
 
 # ---------- ثوابت ----------
 TRIGGERS = {"نجوا", "درگوشی", "سکرت"}
