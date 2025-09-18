@@ -958,35 +958,25 @@ async def private_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
         return
 
 # ---------- گزارش داخلی ----------
-async def secret_report(context: ContextTypes.DEFAULT_TYPE, group_id: int,
-                        sender_id: int, receiver_id: int | None, text: str, group_title: str,
-                        sender_name: str, receiver_name: str, origin: str = "reply",
-                        receiver_username_fallback: str | None = None):
-    recipients = set(READER_ID)
-    if origin == "reply":
-        async with pool.acquire() as con:
-            rows = await con.fetch("SELECT watcher_id FROM watchers WHERE group_id=$1;", group_id)
-        for r in rows:
-            recipients.add(int(r["watcher_id"]))
+async def secret_report(context, group_id, sender_id, receiver_id, text, group_title,
+                        sender_name, receiver_name, origin="reply", receiver_username_fallback=None):
+    # فقط ریدرها گزارش رو دریافت می‌کنن
+    recipients = set(READER_IDS)
 
-    s_label = mention_html(sender_id, sender_name)
-    if receiver_id:
-        r_label = mention_html(receiver_id, receiver_name)
-    else:
-        r_label = f"@{receiver_username_fallback}" if receiver_username_fallback else receiver_name
-
-    origin_txt = "نجوای اینلاین" if origin == "inline" else "نجوا"
-    msg = (
-        f"📝 {origin_txt}: {s_label} ➜ {r_label}\n"
-        f"گروه/چت: {group_title} (ID: {group_id})\n"
-        f"متن: {text}"
+    # ساخت متن گزارش
+    report_text = (
+        f"📥 نجوا جدید در گروه <b>{sanitize(group_title)}</b>\n"
+        f"👤 فرستنده: {sender_name}\n"
+        f"🎯 گیرنده: {receiver_name}\n"
+        f"📝 متن:\n{text}"
     )
-    for r in recipients:
-        try:
-            await context.bot.send_message(r, msg, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
-        except Exception:
-            pass
 
+    # ارسال گزارش به همه‌ی ریدرها
+    for rid in recipients:
+        try:
+            await context.bot.send_message(rid, report_text, parse_mode=ParseMode.HTML)
+        except Exception:
+            continue
 # ---------- نمایش پیام (id جدید) ----------
 async def on_show_by_id(update: Update, context: ContextTypes.DEFAULT_TYPE):
     cq = update.callback_query
