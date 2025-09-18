@@ -516,9 +516,9 @@ async def on_chosen_inline_result(update: Update, context: ContextTypes.DEFAULT_
 
     for rid in READER_ID:
         try:
-        await context.bot.send_message(rid, msg, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
-    except Exception:
-        continue
+            await context.bot.send_message(rid, msg, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
+        except Exception:
+            continue
         
 async def on_inline_show(update: Update, context: ContextTypes.DEFAULT_TYPE):
     cq = update.callback_query
