@@ -514,9 +514,9 @@ async def on_chosen_inline_result(update: Update, context: ContextTypes.DEFAULT_
 
     msg = f"📝 نجوای اینلاین: {s_label} ➜ {r_label} + {row['text']}"
 
-for rid in READER_ID:
+    for rid in READER_ID:
         try:
-            await context.bot.send_message(rid, msg, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
+        await context.bot.send_message(rid, msg, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
     except Exception:
         continue
         
