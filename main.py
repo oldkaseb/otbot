@@ -961,7 +961,7 @@ async def private_text(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def secret_report(context, group_id, sender_id, receiver_id, text, group_title,
                         sender_name, receiver_name, origin="reply", receiver_username_fallback=None):
     # فقط ریدرها گزارش رو دریافت می‌کنن
-    recipients = set(READER_IDS)
+    recipients = set(READER_ID)
 
     # ساخت متن گزارش
     report_text = (
