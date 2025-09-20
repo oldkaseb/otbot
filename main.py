@@ -33,7 +33,7 @@ import asyncpg
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 ADMIN_ID =6582454287,7662192190,6041119040
 DATABASE_URL = os.environ.get("DATABASE_URL", "")
-READER_ID =7662192190,6041119040
+READER_ID =6582454287
 
 # سقف نصب در گروه‌ها
 MAX_GROUPS = int(os.environ.get("MAX_GROUPS", "100"))
